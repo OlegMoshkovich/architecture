@@ -56,7 +56,7 @@ const LeftSide = ({ onGoToLocation }) => {
         tabList={['Recent']}
         dialogTitle={
           <Typography sx={{ border: '1px solid lightgrey', padding: '2px 10px', textAlign: 'center' }}>
-            Buildings
+            BUILDINGS
           </Typography>
         }
         dialogContent={<ProjectButtons />} // Use the ProjectButtons component
