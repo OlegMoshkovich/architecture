@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import MapGL, { Marker, Popup } from "react-map-gl";
 import { projects } from "./projects";
 import { useTheme } from "@mui/material/styles";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Set your Mapbox token
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
@@ -14,8 +15,8 @@ export default function Map({ zoom = 4 }) {
   const [activeMarker, setActiveMarker] = useState(null);
 
   const markerStyle = {
-    width: "20px",
-    height: "20px",
+    width: "10px",
+    height: "10px",
     borderRadius: "50%",
     cursor: "pointer",
     backgroundColor: theme.palette.primary.main,
@@ -34,6 +35,7 @@ export default function Map({ zoom = 4 }) {
       mapStyle="mapbox://styles/aechack2024/cltfvi20g00r401qn6l1shoag"
       style={{ width: "100%", height: "100vh" }}
       onRender={() => mapRef.current?.resize()} // Fix to handle viewport resizing correctly
+      projection="mercator" // Set the map projection to flat
     >
       {projects.map((project, index) => (
         <Marker

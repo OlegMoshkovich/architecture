@@ -87,7 +87,12 @@ export default function Dialog({
             </Stack>
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions
+          sx={{
+            display: 'flex',
+            justifyContent: 'center', // Center the button horizontally
+          }}
+        >
           <Button variant="outlined" size='small' onClick={handleClose}>{actionTitle}</Button>
         </DialogActions>
       </MuiDialog>
