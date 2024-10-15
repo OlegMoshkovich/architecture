@@ -91,6 +91,7 @@ export default function Dialog({
           sx={{
             display: 'flex',
             justifyContent: 'center', // Center the button horizontally
+            // padding: '0px 20px 14px 20px',
           }}
         >
           <Button variant="outlined" size='small' onClick={handleClose}>{actionTitle}</Button>

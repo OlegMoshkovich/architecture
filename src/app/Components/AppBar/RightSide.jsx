@@ -10,12 +10,9 @@ const AboutShare = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
   return (
     <Stack sx={{ overflow: 'scroll' }} spacing={2}>
-      <Typography variant='body1' color='default'>
+      <Typography variant='body1' color='default' sx={{ paddingBottom: '12px' }}>
         We are an agency based in Berlin.
       </Typography>
-      <Stack sx={{ overflow: 'scroll' }} spacing={0}>
-        <Link href="https://www.analogfuture.xyz"> Analog Future</Link>
-      </Stack>
     </Stack>
   );
 };

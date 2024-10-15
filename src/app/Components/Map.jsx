@@ -1,7 +1,7 @@
 "use client"; // Ensures client-side rendering
 import { useRef, useState } from "react";
 import MapGL, { Marker, Popup } from "react-map-gl";
-import { projects } from "./projects";
+import useStore from "../Store"; // Import the store
 import { useTheme } from "@mui/material/styles";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -13,10 +13,11 @@ export default function Map({ zoom = 4 }) {
   const theme = useTheme();
   const [hoveredMarker, setHoveredMarker] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
+  const projects = useStore((state) => state.projects); // Access projects from the store
 
   const markerStyle = {
-    width: "10px",
-    height: "10px",
+    width: "12px",
+    height: "12px",
     borderRadius: "50%",
     cursor: "pointer",
     backgroundColor: theme.palette.primary.main,

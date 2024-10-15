@@ -5,12 +5,12 @@ import Dialog from '../Dialog';
 import Link from '@mui/material/Link';
 import LogoAFit from '../LogoAFit';
 import Button from '@mui/material/Button';
-import { projects } from '../projects'; // Import the projects array
+import useStore from '../../Store'; // Import the store
 
 const About = () => (
   <Stack spacing={2}>
     <Typography variant='body1' color='default'>
-      A.F. is a record of significant buildings we encountered so far.
+      This is a record of important buildings we encountered so far.
     </Typography>
     <Typography variant='body1' color='default'>
       Created by
@@ -20,15 +20,19 @@ const About = () => (
   </Stack>
 );
 
-const ProjectButtons = () => (
-  <Stack spacing={1}>
-    {projects.map((project, index) => (
-      <Button key={index} variant="outlined" size="small"sx={{borderRadius: '0px'}}>
-        {project.name}
-      </Button>
-    ))}
-  </Stack>
-);
+const ProjectButtons = () => {
+  const projects = useStore((state) => state.projects); // Access projects from the store
+
+  return (
+    <Stack spacing={1}>
+      {projects.map((project, index) => (
+        <Button key={index} variant="outlined" size="small" sx={{ borderRadius: '0px' }}>
+          {project.name}
+        </Button>
+      ))}
+    </Stack>
+  );
+};
 
 const LeftSide = ({ onGoToLocation }) => {
   return (
@@ -42,7 +46,7 @@ const LeftSide = ({ onGoToLocation }) => {
         dialogTitle={
           <Stack alignItems={'center'} justifyContent={'center'} direction='row' spacing={1}>
             <Typography sx={{ border: '1px solid lightgrey', padding: '2px 10px' }}>
-              Architecture.Fit
+              Important Buildings
             </Typography>
           </Stack>
         }
@@ -50,13 +54,14 @@ const LeftSide = ({ onGoToLocation }) => {
       />
       <Dialog
         actionTitle={'OK'}
-        buttonLabel={'Architecture'}
+        buttonLabel={'Buildings'}
         buttonColor={'primary'}
         tabs={false}
+        noTitle={true}
         tabList={['Recent']}
         dialogTitle={
           <Typography sx={{ border: '1px solid lightgrey', padding: '2px 10px', textAlign: 'center' }}>
-            Architecture
+            Buildings
           </Typography>
         }
         dialogContent={<ProjectButtons />} // Use the ProjectButtons component

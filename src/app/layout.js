@@ -2,7 +2,7 @@ import Head from 'next/head';
 import './globals.css'; // Your custom global styles
 
 export const metadata = {
-  title: 'Architecture.fit',
+  title: 'Important Buildings',
   description: 'Created by AnalogFuture.xyz',
 };
 
