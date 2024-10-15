@@ -11,7 +11,7 @@ const AboutShare = () => {
   return (
     <Stack sx={{ overflow: 'scroll' }} spacing={2}>
       <Typography variant='body1' color='default' sx={{ paddingBottom: '12px' }}>
-        We are a small agency operating on the intersection of Archtieture and Technoloy.
+        We are a small agency operating on the intersection of Architecture and Technology.
       </Typography>
     </Stack>
   );

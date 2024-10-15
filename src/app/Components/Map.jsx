@@ -12,8 +12,9 @@ export default function Map({ zoom = 4 }) {
   const mapRef = useRef();
   const theme = useTheme();
   const [hoveredMarker, setHoveredMarker] = useState(null);
-  const [activeMarker, setActiveMarker] = useState(null);
   const projects = useStore((state) => state.projects); // Access projects from the store
+  const currentProject = useStore((state) => state.currentProject); // Access currentProject from the store
+  const setCurrentProject = useStore((state) => state.setCurrentProject); // Access setCurrentProject from the store
 
   const markerStyle = {
     width: "12px",
@@ -22,6 +23,18 @@ export default function Map({ zoom = 4 }) {
     cursor: "pointer",
     backgroundColor: theme.palette.primary.main,
     border: `2px solid ${theme.palette.primary.main}`,
+  };
+
+  const highlightedMarkerStyle = {
+    ...markerStyle,
+    backgroundColor: theme.palette.secondary.main,
+    border: `2px solid ${theme.palette.primary.main}`, // Use primary color for border when selected
+  };
+
+  // Add the goToLocation method
+  const goToLocation = (lat, lng, zoom = 11) => {
+    const map = mapRef.current.getMap();
+    map.flyTo({ center: [lng, lat], zoom, essential: true, duration: 2000 }); // Adjusted duration for smoother animation
   };
 
   return (
@@ -48,14 +61,15 @@ export default function Map({ zoom = 4 }) {
           <div
             onMouseEnter={() => setHoveredMarker(index)}
             onMouseLeave={() => setHoveredMarker(null)}
-            onClick={() => setActiveMarker(index === activeMarker ? null : index)}
-            style={{
-              ...markerStyle,
-              backgroundColor:
-                activeMarker === index
-                  ? theme.palette.secondary.main
-                  : theme.palette.primary.main,
+            onClick={() => {
+              setCurrentProject(project); // Set the current project in the store
+              goToLocation(project.lat, project.lng, project.zoom); // Zoom to the selected project
             }}
+            style={
+              currentProject?.name === project.name
+                ? highlightedMarkerStyle
+                : markerStyle
+            }
           />
           {hoveredMarker === index && (
             <Popup
@@ -68,7 +82,11 @@ export default function Map({ zoom = 4 }) {
             >
               <div style={{ color: theme.palette.text.primary }}>
                 <h3>{project.name}</h3>
-                <p>{project.projectInfo[0].description}</p>
+                <img
+                  src={project.projectInfo[0].image}
+                  alt={project.name}
+                  style={{ width: '100px', height: 'auto' }}
+                />
               </div>
             </Popup>
           )}

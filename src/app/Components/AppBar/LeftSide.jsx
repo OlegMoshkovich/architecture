@@ -21,12 +21,20 @@ const About = () => (
 );
 
 const ProjectButtons = () => {
-  const projects = useStore((state) => state.projects); // Access projects from the store
+  const projects = useStore((state) => state.projects);
+  const currentProject = useStore((state) => state.currentProject);
+  const setCurrentProject = useStore((state) => state.setCurrentProject);
 
   return (
     <Stack spacing={1}>
       {projects.map((project, index) => (
-        <Button key={index} variant="outlined" size="small" sx={{ borderRadius: '0px' }}>
+        <Button
+          key={index}
+          variant={currentProject?.name === project.name ? "contained" : "outlined"} // Highlight current project
+          size="small"
+          sx={{ borderRadius: '0px' }}
+          onClick={() => setCurrentProject(project)} // Set current project on click
+        >
           {project.name}
         </Button>
       ))}

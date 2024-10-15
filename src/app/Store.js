@@ -79,6 +79,8 @@ const useStore = create((set) => ({
       ]
     },
   ],
+  currentProject: null, // Add currentProject state
+  setCurrentProject: (project) => set({ currentProject: project }), // Method to set current project
 }));
 
 export default useStore;
