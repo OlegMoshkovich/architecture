@@ -9,10 +9,13 @@ import Stack from '@mui/material/Stack'
 import CloseIcon from '@mui/icons-material/Close';
 import ListSubheader from '@mui/material/ListSubheader';
 import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery'; // Correct import for useMediaQuery
+
 const drawerWidth = 380;
 
-
 export default function SideDrawer({panel, isOpen, setIsOpen, projectName}) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -40,10 +43,10 @@ export default function SideDrawer({panel, isOpen, setIsOpen, projectName}) {
           },
         }}
         sx={{
-          width: drawerWidth,
+          width: isMobile ? '100%' : drawerWidth,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
-            width: drawerWidth,
+            width: isMobile ? '100%' : drawerWidth,
             backgroundColor: (theme) => theme.palette.background.default,
             boxSizing: 'border-box',
             overflow:'hidden',
