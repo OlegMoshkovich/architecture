@@ -6,7 +6,7 @@ const useStore = create((set) => ({
       name: "Reitveld-Shroder Huis",
       lat: 52.0865,
       lng: 5.1460,
-      zoom: 10,
+      zoom: 7,
       modelUrl: 'https://deploy-preview-1010--bldrs-share.netlify.app/share/v/gh/Swiss-Property-AG/Unteraegeri-Public/main/Unteraegeri.ifc',
       projectInfo: [
         {
@@ -25,7 +25,7 @@ const useStore = create((set) => ({
       name: "Bauhaus",
       lat: 51.8416,
       lng: 12.2425,
-      zoom: 10,
+      zoom: 7,
       modelUrl: '',
       projectInfo: [
         {
@@ -44,7 +44,7 @@ const useStore = create((set) => ({
       name: "Pavillon Le Corbusier",
       lat: 47.3554,
       lng: 8.5480,
-      zoom: 10,
+      zoom: 7,
       modelUrl: '',
       projectInfo: [
         {
@@ -63,7 +63,7 @@ const useStore = create((set) => ({
       name: "Barcelona Pavillon",
       lat: 41.3814,
       lng: 2.1228,
-      zoom: 10,
+      zoom: 7,
       modelUrl: '',
       projectInfo: [
         {

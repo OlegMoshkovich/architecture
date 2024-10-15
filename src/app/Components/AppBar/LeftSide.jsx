@@ -20,7 +20,7 @@ const About = () => (
   </Stack>
 );
 
-const ProjectButtons = () => {
+const ProjectButtons = ({ onGoToLocation }) => {
   const projects = useStore((state) => state.projects);
   const currentProject = useStore((state) => state.currentProject);
   const setCurrentProject = useStore((state) => state.setCurrentProject);
@@ -33,7 +33,10 @@ const ProjectButtons = () => {
           variant={currentProject?.name === project.name ? "contained" : "outlined"} // Highlight current project
           size="small"
           sx={{ borderRadius: '0px' }}
-          onClick={() => setCurrentProject(project)} // Set current project on click
+          onClick={() => {
+            setCurrentProject(project); // Set current project on click
+            onGoToLocation(project.lat, project.lng, project.zoom); // Zoom to the selected project
+          }}
         >
           {project.name}
         </Button>
@@ -72,7 +75,7 @@ const LeftSide = ({ onGoToLocation }) => {
             Buildings
           </Typography>
         }
-        dialogContent={<ProjectButtons />} // Use the ProjectButtons component
+        dialogContent={<ProjectButtons onGoToLocation={onGoToLocation} />} // Pass the function to ProjectButtons
       />
     </Stack>
   );

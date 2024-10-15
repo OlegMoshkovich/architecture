@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,6 +18,8 @@ export default function Home() {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width:600px)'); // Define isMobile
 
+  const mapComponentRef = useRef(); // Add mapComponentRef
+
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -26,9 +28,14 @@ export default function Home() {
     setIsMobileDrawerOpen(!isMobileDrawerOpen);
   };
 
+  // Define triggerGoToLocation function
+  const triggerGoToLocation = (lat, lng, zoom) => {
+    mapComponentRef.current?.goToLocation(lat, lng, zoom);
+  };
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <PrimaryAppBar />
+      <PrimaryAppBar onGoToLocation={triggerGoToLocation} />
       <Box
         sx={{
           position: 'fixed',
@@ -39,7 +46,7 @@ export default function Home() {
           overflow: 'hidden', // Ensure no overflow issues
         }}
       >
-        <Map />
+        <Map ref={mapComponentRef} />
       </Box>
       <IconButton
         sx={{ position: 'absolute', top: 16, left: 16, zIndex: 1000 }}
@@ -51,29 +58,29 @@ export default function Home() {
         side="left"
         isOpen={isDrawerOpen}
         setIsOpen={setIsDrawerOpen}
-        panel={<ProjectAccordionList/>}
+        panel={<ProjectAccordionList />}
         projectName=""
       />
       <Stack
-          direction="column"
-          justifyContent="space-between"
-          alignItems="center"
-          sx={{position:'fixed', right: (isDrawerOpen && !isMobile) ? '400px' : '20px', top: '77px'}}
-        >
-              <Tooltip placement={'left'} title={'Information'}>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-haspopup="true"
-                selected={isDrawerOpen}
-                sx={{borderRadius:'0px'}}
-                onClick={()=>setIsDrawerOpen(!isDrawerOpen)}
-              >
-                <MenuOutlinedIcon size='inherit'/>
-              </IconButton>
-              </Tooltip>
-        </Stack>
+        direction="column"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ position: 'fixed', right: (isDrawerOpen && !isMobile) ? '400px' : '20px', top: '77px' }}
+      >
+        <Tooltip placement={'left'} title={'Information'}>
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            selected={isDrawerOpen}
+            sx={{ borderRadius: '0px' }}
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+          >
+            <MenuOutlinedIcon size='inherit' />
+          </IconButton>
+        </Tooltip>
+      </Stack>
     </div>
   );
 }

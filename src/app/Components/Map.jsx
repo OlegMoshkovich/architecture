@@ -1,5 +1,5 @@
 "use client"; // Ensures client-side rendering
-import { useRef, useState } from "react";
+import { useRef, useState, forwardRef, useImperativeHandle } from "react";
 import MapGL, { Marker, Popup } from "react-map-gl";
 import useStore from "../Store"; // Import the store
 import { useTheme } from "@mui/material/styles";
@@ -8,7 +8,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // Set your Mapbox token
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
-export default function Map({ zoom = 4 }) {
+const Map = forwardRef(({ zoom = 4 }, ref) => {
   const mapRef = useRef();
   const theme = useTheme();
   const [hoveredMarker, setHoveredMarker] = useState(null);
@@ -31,11 +31,18 @@ export default function Map({ zoom = 4 }) {
     border: `2px solid ${theme.palette.primary.main}`, // Use primary color for border when selected
   };
 
-  // Add the goToLocation method
-  const goToLocation = (lat, lng, zoom = 11) => {
+  // Define the goToLocation method
+  const goToLocation = (lat, lng, zoom = 4) => {
     const map = mapRef.current.getMap();
-    map.flyTo({ center: [lng, lat], zoom, essential: true, duration: 2000 }); // Adjusted duration for smoother animation
+    map.flyTo({ center: [lng, lat], zoom, essential: true, duration: 5000 }); // Adjusted duration for smoother animation
   };
+
+  // Expose goToLocation method to parent component
+  useImperativeHandle(ref, () => ({
+    goToLocation,
+  }));
+
+  Map.displayName = 'Map';
 
   return (
     <MapGL
@@ -94,4 +101,6 @@ export default function Map({ zoom = 4 }) {
       ))}
     </MapGL>
   );
-}
+});
+
+export default Map;
