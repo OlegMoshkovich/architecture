@@ -16,14 +16,20 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
   const currentProject = useStore((state) => state.currentProject); // Access currentProject from the store
   const setCurrentProject = useStore((state) => state.setCurrentProject); // Access setCurrentProject from the store
 
-  const markerStyle = {
-    width: "12px",
-    height: "12px",
-    borderRadius: "50%",
-    cursor: "pointer",
-    backgroundColor: theme.palette.primary.main,
-    border: `2px solid ${theme.palette.primary.main}`,
+  // Function to determine marker size based on screen width
+  const getMarkerStyle = () => {
+    const isMobile = window.innerWidth <= 768; // Define mobile breakpoint
+    return {
+      width: isMobile ? "16px" : "12px",
+      height: isMobile ? "16px" : "12px",
+      borderRadius: "50%",
+      cursor: "pointer",
+      backgroundColor: theme.palette.primary.main,
+      border: `2px solid ${theme.palette.primary.main}`,
+    };
   };
+
+  const markerStyle = getMarkerStyle();
 
   const highlightedMarkerStyle = {
     ...markerStyle,
