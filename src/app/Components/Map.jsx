@@ -61,14 +61,17 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
 
   Map.displayName = 'Map';
 
+  // Function to determine if the device is mobile
+  const isMobile = () => window.innerWidth <= 768; // You can adjust the breakpoint as needed
+
+  const initialViewState = isMobile()
+    ? { latitude: 48.0, longitude: 7.60, zoom: zoom } // Mobile view
+    : { latitude: 50.0, longitude: 6.0415, zoom: zoom }; // Desktop view
+
   return (
     <MapGL
       ref={mapRef}
-      initialViewState={{
-        latitude: 47.8, // Adjusted latitude to move the view north
-        longitude: 7.30, // Adjusted longitude
-        zoom: zoom,
-      }}
+      initialViewState={initialViewState}
       mapboxAccessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/aechack2024/cltfvi20g00r401qn6l1shoag"
       style={{ width: "100%", height: "100vh" }}
