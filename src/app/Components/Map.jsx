@@ -66,7 +66,7 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
       ref={mapRef}
       initialViewState={{
         latitude: 50.0, // Adjusted latitude to move the view north
-        longitude: 5.0415, // Longitude remains the same
+        longitude: 7.0415, // Adjusted longitude
         zoom: zoom,
       }}
       mapboxAccessToken={MAPBOX_TOKEN}
