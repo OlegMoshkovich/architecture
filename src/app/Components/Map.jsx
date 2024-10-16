@@ -65,8 +65,8 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
     <MapGL
       ref={mapRef}
       initialViewState={{
-        latitude: 47.3220, // Latitude for Dijon
-        longitude: 5.0415, // Longitude for Dijon
+        latitude: 50.0, // Adjusted latitude to move the view north
+        longitude: 5.0415, // Longitude remains the same
         zoom: zoom,
       }}
       mapboxAccessToken={MAPBOX_TOKEN}

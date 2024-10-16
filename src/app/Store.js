@@ -82,6 +82,26 @@ const useStore = create((set) => ({
         },
       ]
     },
+    {
+      name: "Petrol Station",
+      lat: 55.7681, // Updated latitude
+      lng: 12.5763, // Updated longitude
+      zoom: 7,
+      modelUrl: '',
+      projectUrl: 'https://arnejacobsen.com/works/petrol-station/',
+      projectInfo: [
+        {
+          name: 'Description',
+          description: "The Barcelona Pavilion was designed by Ludwig Mies van der Rohe and Lilly Reich as the German Pavilion for the Barcelona International Exhibition, held on Montjuïc.",
+          image: 'https://arnejacobsen.com/wp-content/uploads/2022/02/Kopi-af-DSC03124_4.jpg.webp'
+        },
+        {
+          name: 'The Building',
+          image: 'https://images.adsttc.com/media/images/54c6/a195/e58e/ced6/7000/0007/slideshow/Mies4.jpg?1422303611',
+          description: "The Barcelona Pavilion, an emblematic work of the Modern Movement, has been exhaustively studied and interpreted as well as having inspired the oeuvre of several generations of architects. It was designed by Ludwig Mies van der Rohe and Lilly Reich as the German national pavilion for the 1929 Barcelona International Exhibition. Built from glass, steel and different kinds of marble, the Pavilion was conceived to accommodate the official reception presided over by Kings of Spain Alfonso XIII and Victoria Eugenia along with the German authorities.",
+        },
+      ]
+    },
   ],
   currentProject: null, // Add currentProject state
   setCurrentProject: (project) => set({ currentProject: project }), // Method to set current project
