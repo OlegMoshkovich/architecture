@@ -10,7 +10,7 @@ import useStore from '../../Store'; // Import the store
 const About = () => (
   <Stack spacing={2}>
     <Typography variant='body1' color='default'>
-      This is a record of important buildings we encountered so far.
+      This is a record of cool buildings we encountered so far.
     </Typography>
     <Typography variant='body1' color='default'>
       Created by
@@ -51,13 +51,14 @@ const LeftSide = ({ onGoToLocation }) => {
       <Dialog
         iconButton={true}
         labelBold={false}
-        buttonLabel='Analog Future'
+        buttonLabel='Cool Buildings'
         tabs={false}
+        noTitle={true}
         icon={<LogoAFit/>}
         dialogTitle={
           <Stack alignItems={'center'} justifyContent={'center'} direction='row' spacing={1}>
             <Typography sx={{ border: '1px solid lightgrey', padding: '2px 10px' }}>
-              Important Buildings
+              Cool Buildings
             </Typography>
           </Stack>
         }
@@ -65,7 +66,7 @@ const LeftSide = ({ onGoToLocation }) => {
       />
       <Dialog
         actionTitle={'OK'}
-        buttonLabel={'Buildings'}
+        buttonLabel={'Cool Buildings'}
         buttonColor={'primary'}
         tabs={false}
         noTitle={true}

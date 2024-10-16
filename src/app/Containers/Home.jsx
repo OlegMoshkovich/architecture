@@ -58,7 +58,7 @@ export default function Home() {
         side="left"
         isOpen={isDrawerOpen}
         setIsOpen={setIsDrawerOpen}
-        panel={<ProjectAccordionList />}
+        panel={<ProjectAccordionList mapRef={mapComponentRef} />} // Pass mapComponentRef here
         projectName=""
       />
       <Stack

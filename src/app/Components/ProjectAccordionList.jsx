@@ -8,8 +8,14 @@ import Typography from '@mui/material/Typography';
 import useStore from '../Store';
 import CardMedia from '@mui/material/CardMedia';
 
-export default function ProjectAccordionList() {
-  const { projects } = useStore(); // Assuming 'project' is an array of project objects
+export default function ProjectAccordionList({ mapRef }) {
+  const { projects } = useStore();
+
+  const handleImageClick = (project) => {
+    if (mapRef.current) {
+      mapRef.current.goToLocation(project.lat, project.lng, project.zoom);
+    }
+  };
 
   return (
     <Stack justifyContent='center'>
@@ -26,7 +32,7 @@ export default function ProjectAccordionList() {
             <Accordion
               key={proj.name}
               title={<Typography>{proj.name}</Typography>}
-              expand={true} // Expand the first accordion by default
+              expand={true}
               content={
                 <Stack sx={{ width: '320px', marginTop: '-8px' }} spacing={2}>
                   {proj.projectInfo[0].image && (
@@ -34,9 +40,11 @@ export default function ProjectAccordionList() {
                       <CardMedia
                         component="img"
                         alt={proj.projectInfo.name}
-                        height="240" // Set as needed
+                        height="240"
                         image={proj.projectInfo[0].image}
                         title={proj.projectInfo[0].name}
+                        onClick={() => handleImageClick(proj)}
+                        style={{ cursor: 'pointer' }}
                       />
                     </Stack>
                   )}
@@ -52,4 +60,3 @@ export default function ProjectAccordionList() {
     </Stack>
   );
 }
-

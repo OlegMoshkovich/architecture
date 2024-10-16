@@ -18,10 +18,21 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
 
   // Function to determine marker size based on screen width
   const getMarkerStyle = () => {
-    const isMobile = window.innerWidth <= 768; // Define mobile breakpoint
+    if (typeof window !== 'undefined') { // Check if window is defined
+      const isMobile = window.innerWidth <= 768; // Define mobile breakpoint
+      return {
+        width: isMobile ? "14px" : "12px",
+        height: isMobile ? "14px" : "12px",
+        borderRadius: "50%",
+        cursor: "pointer",
+        backgroundColor: theme.palette.primary.main,
+        border: `2px solid ${theme.palette.primary.main}`,
+      };
+    }
+    // Default style if window is not defined
     return {
-      width: isMobile ? "16px" : "12px",
-      height: isMobile ? "16px" : "12px",
+      width: "12px",
+      height: "12px",
       borderRadius: "50%",
       cursor: "pointer",
       backgroundColor: theme.palette.primary.main,
@@ -34,7 +45,7 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
   const highlightedMarkerStyle = {
     ...markerStyle,
     backgroundColor: theme.palette.secondary.main,
-    border: `2px solid ${theme.palette.primary.main}`, // Use primary color for border when selected
+    border: `2px solid ${theme.palette.primary.main}`,
   };
 
   // Define the goToLocation method
@@ -76,7 +87,7 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
             onMouseLeave={() => setHoveredMarker(null)}
             onClick={() => {
               setCurrentProject(project); // Set the current project in the store
-              goToLocation(project.lat, project.lng, project.zoom); // Zoom to the selected project
+              // goToLocation(project.lat, project.lng, project.zoom); // Removed this line
             }}
             style={
               currentProject?.name === project.name
