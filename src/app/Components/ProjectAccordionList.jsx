@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import useStore from '../Store';
 import CardMedia from '@mui/material/CardMedia';
+import Link from '@mui/material/Link'; // Import Link from MUI
 
 export default function ProjectAccordionList({ mapRef }) {
   const { projects } = useStore();
@@ -48,9 +49,13 @@ export default function ProjectAccordionList({ mapRef }) {
                       />
                     </Stack>
                   )}
-                  <Stack direction='row' justifyContent={'space-between'}>
-                    <Typography>{proj.description}</Typography>
-                  </Stack>
+                  {proj.projectUrl && (
+                    <Link variant="caption" href={proj.projectUrl} target="_blank" rel="noopener"
+                      sx={{ padding: 0, margin: 0 }}
+                    >
+                      {proj.projectUrl}
+                    </Link>
+                  )}
                 </Stack>
               }
             />

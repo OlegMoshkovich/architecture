@@ -8,6 +8,7 @@ const useStore = create((set) => ({
       lng: 5.1460,
       zoom: 7,
       modelUrl: 'https://deploy-preview-1010--bldrs-share.netlify.app/share/v/gh/Swiss-Property-AG/Unteraegeri-Public/main/Unteraegeri.ifc',
+      projectUrl: 'https://www.rietveldschroderhuis.nl/de',
       projectInfo: [
         {
           name: 'Description',
@@ -27,6 +28,7 @@ const useStore = create((set) => ({
       lng: 12.2425,
       zoom: 7,
       modelUrl: '',
+      projectUrl: 'https://bauhaus-dessau.de/',
       projectInfo: [
         {
           name: 'Description',
@@ -46,6 +48,7 @@ const useStore = create((set) => ({
       lng: 8.5480,
       zoom: 7,
       modelUrl: '',
+      projectUrl: 'https://pavillon-le-corbusier.ch/en/',
       projectInfo: [
         {
           name: 'Description',
@@ -65,6 +68,7 @@ const useStore = create((set) => ({
       lng: 2.1228,
       zoom: 7,
       modelUrl: '',
+      projectUrl: 'https://miesbcn.com/the-pavilion/',
       projectInfo: [
         {
           name: 'Description',
