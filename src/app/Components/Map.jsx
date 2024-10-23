@@ -1,5 +1,6 @@
 "use client"; // Ensures client-side rendering
-import { useRef, useState, forwardRef, useImperativeHandle } from "react";
+import React, { useState, useEffect } from "react";
+import { useRef, forwardRef, useImperativeHandle } from "react";
 import MapGL, { Marker, Popup } from "react-map-gl";
 import useStore from "../Store"; // Import the store
 import { useTheme } from "@mui/material/styles";
@@ -64,9 +65,20 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
   // Function to determine if the device is mobile
   const isMobile = () => window.innerWidth <= 768; // You can adjust the breakpoint as needed
 
-  const initialViewState = isMobile()
-    ? { latitude: 48.0, longitude: 7.60, zoom: zoom } // Mobile view
-    : { latitude: 50.0, longitude: 6.0415, zoom: zoom }; // Desktop view
+  const [initialViewState, setInitialViewState] = useState({
+    latitude: 50.0, // Default to desktop view
+    longitude: 6.0415,
+    zoom: zoom,
+  });
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768; // Check if the device is mobile
+    setInitialViewState({
+      latitude: isMobile ? 48.0 : 50.0, // Mobile or desktop latitude
+      longitude: isMobile ? 7.60 : 6.0415, // Mobile or desktop longitude
+      zoom: zoom,
+    });
+  }, []);
 
   return (
     <MapGL
