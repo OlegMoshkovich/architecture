@@ -22,8 +22,8 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
     if (typeof window !== 'undefined') { // Check if window is defined
       const isMobile = window.innerWidth <= 768; // Define mobile breakpoint
       return {
-        width: isMobile ? "14px" : "12px",
-        height: isMobile ? "14px" : "12px",
+        width: isMobile ? "21px" : "12px",
+        height: isMobile ? "21px" : "12px",
         borderRadius: "50%",
         cursor: "pointer",
         backgroundColor: theme.palette.primary.main,
@@ -45,8 +45,8 @@ const Map = forwardRef(({ zoom = 4 }, ref) => {
 
   const highlightedMarkerStyle = {
     ...markerStyle,
-    backgroundColor: theme.palette.secondary.main,
-    border: `2px solid ${theme.palette.primary.main}`,
+    // backgroundColor: theme.palette.secondary.main,
+    // border: `2px solid ${theme.palette.primary.main}`,
   };
 
   // Define the goToLocation method

@@ -14,7 +14,7 @@ import ProjectAccordionList from '../Components/ProjectAccordionList';
 
 
 export default function Home() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width:600px)'); // Define isMobile
 

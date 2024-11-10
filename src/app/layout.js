@@ -2,15 +2,15 @@ import Head from 'next/head';
 import './globals.css'; // Your custom global styles
 
 export const metadata = {
-  title: "Cool buildlings",
+  title: "Cool buildings",
   description: "..enough said",
   openGraph: {
-    title: "Cool buildlings",
+    title: "Cool buildings",
     description: "created by Analog Future",
     url: "https://coolbuildings.xyz",
     images: [
       {
-        url: "/images/social-preview.png",
+        url: "https://coolbuildings.xyz/images/social-preview.png", // Use the full URL
         width: 1200,
         height: 630,
         alt: "Social Preview Image",
@@ -20,11 +20,17 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cool Buildlings",
-    description: "A subjective list of cool buildlings",
-    image: "/images/social-preview.png",
+    title: "Cool Buildings",
+    description: "A subjective list of cool buildings",
+    images: [
+      {
+        url: "https://coolbuildings.xyz/images/social-preview.png", // Use the full URL
+        alt: "Social Preview Image",
+      },
+    ],
   },
 };
+
 
 export default function RootLayout({ children }) {
   return (
