@@ -11,7 +11,7 @@ const AboutShare = () => {
   return (
     <Stack sx={{ overflow: 'scroll' }} spacing={2}>
       <Typography variant='body1' color='default' sx={{ paddingBottom: '12px' }}>
-        Chat with  {' '} <Link href="https://www.analogfuture.xyz">kind robot</Link>
+        <Link href="https://www.analogfuture.xyz/kindrobot">kind robot</Link>
       </Typography>
     </Stack>
   );

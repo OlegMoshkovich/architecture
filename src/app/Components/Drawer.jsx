@@ -77,7 +77,7 @@ export default function SideDrawer({panel, isOpen, setIsOpen, projectName}) {
                 </ListSubheader>
                 <Stack>
                   <List spacing={1}>
-                    {panel}
+                    {React.cloneElement(panel, { setIsOpen })}
                   </List>
               </Stack>
             </List>

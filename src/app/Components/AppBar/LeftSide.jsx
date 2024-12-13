@@ -10,7 +10,7 @@ import useStore from '../../Store'; // Import the store
 const About = () => (
   <Stack spacing={2}>
     <Typography variant='body1' color='default'>
-      This is a record of cool buildings we encountered so far.
+      This is a record of unique and significant architectural artifacts.
     </Typography>
     <Typography variant='body1' color='default'>
       Created by

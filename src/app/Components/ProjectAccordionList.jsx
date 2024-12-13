@@ -8,13 +8,20 @@ import Typography from '@mui/material/Typography';
 import useStore from '../Store';
 import CardMedia from '@mui/material/CardMedia';
 import Link from '@mui/material/Link'; // Import Link from MUI
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function ProjectAccordionList({ mapRef }) {
+export default function ProjectAccordionList({ mapRef, setIsOpen }) {
   const { projects } = useStore();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleImageClick = (project) => {
     if (mapRef.current) {
       mapRef.current.goToLocation(project.lat, project.lng, project.zoom);
+    }
+    if (isMobile) {
+      setIsOpen(false); // Close the drawer on mobile
     }
   };
 

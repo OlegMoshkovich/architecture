@@ -53,7 +53,7 @@ const useStore = create((set) => ({
         {
           name: 'Description',
           description: "The Pavillon Le Corbusier on Lake Zurich is considered an architectural jewel. The building was initiated by Heidi Weber, who commissioned Le Corbusier and oversaw its completion in 1967. It is the last building designed by the important architect and his only building made of steel and glass.",
-          image: 'https://pavillon-le-corbusier.ch/wp-content/uploads/2024/03/pavillon-rundgang-1536x1024.jpg'
+          image: 'https://mfg.rokka.io/fe_nuxt_no_crop/variables-w-1480--options-dpr-2/a3d59a8a0b1856b53dc88c796cfc1c39e942b50a/image.jpg'
         },
         {
           name: 'The Building',
