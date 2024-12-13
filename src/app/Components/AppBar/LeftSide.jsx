@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import useStore from '../../Store'; // Import the store
 
 const About = () => (
-  <Stack spacing={2}>
+  <Stack spacing={2} sx={{paddingTop:'10px'}}>
     <Typography variant='body1' color='default'>
       This is a record of unique and significant architectural artifacts.
     </Typography>
